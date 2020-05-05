@@ -29,14 +29,13 @@ Please note that this section will get updated with screenshots and whatnot at a
   ```
   *The IP address might be different depending on your OS.  Use `docker inspect` to figure out what IP to use.*
 
-9. Once everything is finished up, You'll be able to visit http://magentocommerce.loc:8088.  Your administrative portal is at http://magentocommerce.loc:8088/admin.  Unless you changed them in the Dockerfile, your username is "admin" and your password is "mageU123".
-10. Open up VS Code. You have some extensions to install:
+9. Open up VS Code. You have some extensions to install:
     * [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
     * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
     * [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
     * [PHP Intelliphense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
-11. Once you have those installed and have re-opened VS Code, you'll notice a Docker Icon in the left-hand toolbar. Click it and look for the `magento-opensource-dev_m23` line under the `Containers` section.  Right-click over that and choose "Attach Visual Studio Code".
-12. VS Code will install some of your extensions inside the container. If, when you click on the extensions icon in VS Code, you do not see At least PHP Debug and PHP Intellisense installed in the container section, you can scroll up to your "enabled" section, and install them manually. You may get a message complaining that the interpreter for PHP could not be found.  This is located at /usr/bin/php. Click on the edit in settings button, and choose the `Remote` tab.  the click on the `edit in settings.json link`. Add your interpreter and a small settings tweak like this:
+10. Once you have those installed and have re-opened VS Code, you'll notice a Docker Icon in the left-hand toolbar. Click it and look for the `magento-opensource-dev_m23` line under the `Containers` section.  Right-click over that and choose "Attach Visual Studio Code".
+11. VS Code will install some of your extensions inside the container. If, when you click on the extensions icon in VS Code, you do not see At least PHP Debug and PHP Intellisense installed in the container section, you can scroll up to your "enabled" section, and install them manually. You may get a message complaining that the interpreter for PHP could not be found.  This is located at /usr/bin/php. Click on the edit in settings button, and choose the `Remote` tab.  the click on the `edit in settings.json link`. Add your interpreter and a small settings tweak like this:
   ```
   {
     "php.suggest.basic": false,
@@ -44,7 +43,7 @@ Please note that this section will get updated with screenshots and whatnot at a
   }
   ```
 
-13. You will probably also have to add a debugger config.  After verifying that the PHP debug extension is installed, go to the Debug menu and choose "Open Configurations" and choose PHP. Edit to your liking.  Something like this should be fine:
+12. You will probably also have to add a debugger config.  After verifying that the PHP debug extension is installed, go to the Debug menu and choose "Open Configurations" and choose PHP. Edit to your liking.  Something like this should be fine:
   ```
   {
     "version": "0.2.0",
@@ -59,15 +58,15 @@ Please note that this section will get updated with screenshots and whatnot at a
   }
   ```
 
-14. Save your changes, and close out of the settings files. Re-open VSCode so that Intellisense can begin parsing through your source files.  This will take a long while.
+13. Save your changes, and close out of the settings files. Re-open VSCode so that Intellisense can begin parsing through your source files.  This will take a long while.
 
 Now you can edit to your heart's content, and even debug normally by hitting `F5` or `Debug -> Start Debugging`, and your editor will behave like a proper IDE, but attached to a container.
 
-15. You'll still need to go through Magento's setup process.  This means you'll need to clone your magento repo. If you're using Magento Commerce Cloud, you'll use the magento-cloud tool to authenticate (most likely with `magento-cloud auth:password-login`).  You'll also need to grab copies of your database, media files, and app/etc and bring them into here.  You'll probably need to set up SSH keys. All of this, sadly, is beyond the scope of this document, but you're already 95% of the way there.
+14. You'll still need to go through Magento's setup process.  This means you'll need to clone your magento repo. If you're using Magento Commerce Cloud, you'll use the magento-cloud tool to authenticate (most likely with `magento-cloud auth:password-login`).  You'll also need to grab copies of your database, media files, and app/etc and bring them into here.  You'll probably need to set up SSH keys. All of this, sadly, is beyond the scope of this document, but you're already 95% of the way there.
 
-16. One final config item. ***IMPORTANT***: Once you have a folder with magento installed, be sure to symlink a folder called `www` to it. Like this: `ln -s my-magento-folder www`.  Your nginx install expects the magento root to be at `/home/magentodev/www`, so just give it a symlink.  On the nice side, this means you can have multiple installs in separate folders and just re-point the symlink to switch between them.
+15. One final config item. ***IMPORTANT***: Once you have a folder with magento installed, be sure to symlink a folder called `www` to it. Like this: `ln -s my-magento-folder www`.  Your nginx install expects the magento root to be at `/home/magentodev/www`, so just give it a symlink.  On the nice side, this means you can have multiple installs in separate folders and just re-point the symlink to switch between them.
 
-17. A note on accessing your mysql database. You can easily get administrative access by: `sudo mysql --defaults-file=/etc/mysql/debian.cnf`. Then you can do whatever you need.
+16. A note on accessing your mysql database. You can easily get administrative access by: `sudo mysql --defaults-file=/etc/mysql/debian.cnf`. Then you can do whatever you need.
 
 ## Rationale
 There is already a [docker project](https://github.com/mike61988/magento2-dk) that you can use for the MagentoU courses, and, in theory, could use for general development. This project takes lessons learned from that project, and starts from scratch in order to:
