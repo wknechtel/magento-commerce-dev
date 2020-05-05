@@ -34,7 +34,7 @@ Please note that this section will get updated with screenshots and whatnot at a
     * [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack)
     * [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
     * [PHP Intelliphense](https://marketplace.visualstudio.com/items?itemName=bmewburn.vscode-intelephense-client)
-10. Once you have those installed and have re-opened VS Code, you'll notice a Docker Icon in the left-hand toolbar. Click it and look for the `magento-opensource-dev_m23` line under the `Containers` section.  Right-click over that and choose "Attach Visual Studio Code".
+10. Once you have those installed and have re-opened VS Code, you'll notice a Docker Icon in the left-hand toolbar. Click it and look for the `magento-commerce-dev_mcloud23` line under the `Containers` section.  Right-click over that and choose "Attach Visual Studio Code".
 11. VS Code will install some of your extensions inside the container. If, when you click on the extensions icon in VS Code, you do not see At least PHP Debug and PHP Intellisense installed in the container section, you can scroll up to your "enabled" section, and install them manually. You may get a message complaining that the interpreter for PHP could not be found.  This is located at /usr/bin/php. Click on the edit in settings button, and choose the `Remote` tab.  the click on the `edit in settings.json link`. Add your interpreter and a small settings tweak like this:
   ```
   {
