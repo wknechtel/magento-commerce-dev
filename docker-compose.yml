@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  mcloud23:
+    build: ./magento-cloud/
+    ports:
+      - "80:80"
+      - "3306:3306"
+      - "6379:6379"
+      - "5672:5672"
+      - "9200:9200"
+      - "15672:15672"
+    volumes:
+       - mchome:/home/magentodev
+       - mclog:/var/log
+    extra_hosts:
+      - "database.internal:127.0.0.1"
+      - "redis.internal:127.0.0.1"
+      - "rabbitmq.internal:127.0.0.1"
+    tty: true
+    container_name: mcloud23
+volumes:
+  mchome:
+  mclog:
