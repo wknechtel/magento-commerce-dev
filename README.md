@@ -15,8 +15,8 @@ Please note that this section will get updated with screenshots and whatnot at a
 5. Clone this repository to wherever it makes sense for you. For example:
   ```
   cd C:\Users\MageDev\Development
-  git clone https://github.com/wknechtel/magento-opensource-dev.git
-  cd magento-opensource-dev
+  git clone https://github.com/wknechtel/magento-commerce-dev.git
+  cd magento-commerce-dev
   ```
 6. Now we use docker-compose to build and bring up the environment:
   ```
